@@ -16,7 +16,7 @@ const renderCloud = function (ctx, x, y, color) {
 };
 
 const getMaxElement = function (arr) {
-  const maxElement = arr[0];
+  let maxElement = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
     if (arr[i] > maxElement) {
