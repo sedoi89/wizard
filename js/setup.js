@@ -1,8 +1,8 @@
 'use strict';
 
 const fireBallColor = [`#ee4830`, `#30a8ee`, `#5ce6c0`, `#e848d5`, `#e6e848`];
-const coatColors = window.wizard.coatColor;
-const eyesColors = window.wizard.eyesColor;
+const coatColors = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
+const eyesColors = [`black`, `red`, `blue`, `yellow`, `green`];
 const setups = document.querySelector(`.setup`);
 const setupWizard = setups.querySelector(`.wizard`);
 const fireBall = setups.querySelector(`.setup-fireball`);
@@ -29,4 +29,12 @@ setupWizard.addEventListener(`click`, (evt) => {
   }
 });
 
+const form = setups.querySelector(`.setup-wizard-form`);
 
+
+form.addEventListener(`submit`, function (evt) {
+  evt.preventDefault();
+  window.backend.save(new FormData(form), function (response) {
+    setups.classList.add(`hidden`);
+  });
+});
