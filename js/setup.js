@@ -19,13 +19,19 @@ fireBall.addEventListener(`click`, (evt) => {
 
 setupWizard.addEventListener(`click`, (evt) => {
   if (evt.target.classList.contains(`wizard-coat`)) {
-    let vAl = window.util.getRandom(coatColors);
-    evt.target.style.fill = vAl;
-    setupCoatColor.value = vAl;
+    let coatColor = window.util.getRandom(coatColors);
+    evt.target.style.fill = coatColor;
+    setupCoatColor.value = coatColor;
+    setTimeout(() => {
+      window.wizardSemilar.filteredWizards();
+    }, 1500);
   } else if (evt.target.classList.contains(`wizard-eyes`)) {
-    let vBl = window.util.getRandom(eyesColors);
-    evt.target.style.fill = vBl;
-    setupEyesColor.value = vBl;
+    let eyeColor = window.util.getRandom(eyesColors);
+    evt.target.style.fill = eyeColor;
+    setupEyesColor.value = eyeColor;
+    setTimeout(() => {
+      window.wizardSemilar.filteredWizards();
+    }, 1500);
   }
 });
 
@@ -38,3 +44,11 @@ form.addEventListener(`submit`, function (evt) {
     setups.classList.add(`hidden`);
   });
 });
+
+let coatColor = setupCoatColor.value;
+let eyeColor = setupEyesColor.value;
+window.setup = {
+  coatColor,
+  eyeColor
+};
+
